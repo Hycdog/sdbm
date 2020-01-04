@@ -5,6 +5,7 @@ Table::Table(QWidget *parent){
     this->horizontalHeader()->setStretchLastSection(true);
     this->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     this->verticalHeader()->setHidden(true);
+    this->horizontalHeader()->setStyleSheet("QHeaderView::section{font: 12pt; } ;}");
     this->setSelectionMode(QTableWidget::SingleSelection);
     this->setSelectionBehavior(QAbstractItemView::SelectRows);
     connect(this, SIGNAL(cellEntered(int, int)), this, SLOT(mouseOnRow(int, int)), Qt::DirectConnection);

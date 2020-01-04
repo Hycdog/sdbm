@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
@@ -55,12 +56,17 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page_selectUser;
     QGridLayout *gridLayout_4;
-    QLabel *label_title_selectUser;
     QHBoxLayout *horizontalLayout;
-    QLabel *label_inputSearchUserHint;
-    QLineEdit *lineEdit_searchUser;
+    QLabel *label_stuname;
+    QLineEdit *lineEdit_stuname;
+    QLabel *label_sno;
+    QLineEdit *lineEdit_sno;
+    QLabel *label_gender;
+    QComboBox *comboBox_gender;
+    QPushButton *pushButton_search;
     Table *tableWidget_displayUser;
-    QPushButton *pushButton_confirmUser;
+    QLabel *label_title_selectUser;
+    QLabel *label_querystatus;
     QWidget *page_registerUser;
     QGridLayout *gridLayout_5;
     QLabel *label_title_registerUser;
@@ -265,49 +271,96 @@ public:
         page_selectUser->setObjectName(QString::fromUtf8("page_selectUser"));
         gridLayout_4 = new QGridLayout(page_selectUser);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        label_title_selectUser = new QLabel(page_selectUser);
-        label_title_selectUser->setObjectName(QString::fromUtf8("label_title_selectUser"));
-        QFont font2;
-        font2.setPointSize(18);
-        label_title_selectUser->setFont(font2);
-        label_title_selectUser->setAlignment(Qt::AlignCenter);
-        label_title_selectUser->setMargin(5);
-
-        gridLayout_4->addWidget(label_title_selectUser, 0, 0, 1, 1);
-
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_inputSearchUserHint = new QLabel(page_selectUser);
-        label_inputSearchUserHint->setObjectName(QString::fromUtf8("label_inputSearchUserHint"));
-        label_inputSearchUserHint->setFont(font);
+        label_stuname = new QLabel(page_selectUser);
+        label_stuname->setObjectName(QString::fromUtf8("label_stuname"));
+        label_stuname->setMaximumSize(QSize(100, 16777215));
+        label_stuname->setFont(font);
 
-        horizontalLayout->addWidget(label_inputSearchUserHint);
+        horizontalLayout->addWidget(label_stuname);
 
-        lineEdit_searchUser = new QLineEdit(page_selectUser);
-        lineEdit_searchUser->setObjectName(QString::fromUtf8("lineEdit_searchUser"));
-        QFont font3;
-        font3.setPointSize(20);
-        lineEdit_searchUser->setFont(font3);
+        lineEdit_stuname = new QLineEdit(page_selectUser);
+        lineEdit_stuname->setObjectName(QString::fromUtf8("lineEdit_stuname"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(lineEdit_stuname->sizePolicy().hasHeightForWidth());
+        lineEdit_stuname->setSizePolicy(sizePolicy3);
+        lineEdit_stuname->setFont(font);
 
-        horizontalLayout->addWidget(lineEdit_searchUser);
+        horizontalLayout->addWidget(lineEdit_stuname);
+
+        label_sno = new QLabel(page_selectUser);
+        label_sno->setObjectName(QString::fromUtf8("label_sno"));
+        label_sno->setMaximumSize(QSize(100, 16777215));
+        label_sno->setFont(font);
+
+        horizontalLayout->addWidget(label_sno);
+
+        lineEdit_sno = new QLineEdit(page_selectUser);
+        lineEdit_sno->setObjectName(QString::fromUtf8("lineEdit_sno"));
+        sizePolicy3.setHeightForWidth(lineEdit_sno->sizePolicy().hasHeightForWidth());
+        lineEdit_sno->setSizePolicy(sizePolicy3);
+        lineEdit_sno->setFont(font);
+
+        horizontalLayout->addWidget(lineEdit_sno);
+
+        label_gender = new QLabel(page_selectUser);
+        label_gender->setObjectName(QString::fromUtf8("label_gender"));
+        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(label_gender->sizePolicy().hasHeightForWidth());
+        label_gender->setSizePolicy(sizePolicy4);
+        label_gender->setMaximumSize(QSize(100, 16777215));
+        label_gender->setFont(font);
+
+        horizontalLayout->addWidget(label_gender);
+
+        comboBox_gender = new QComboBox(page_selectUser);
+        comboBox_gender->setObjectName(QString::fromUtf8("comboBox_gender"));
+        sizePolicy.setHeightForWidth(comboBox_gender->sizePolicy().hasHeightForWidth());
+        comboBox_gender->setSizePolicy(sizePolicy);
+        comboBox_gender->setMinimumSize(QSize(100, 0));
+        comboBox_gender->setMaximumSize(QSize(200, 16777215));
+        comboBox_gender->setFont(font);
+
+        horizontalLayout->addWidget(comboBox_gender);
+
+        pushButton_search = new QPushButton(page_selectUser);
+        pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
+        pushButton_search->setMinimumSize(QSize(100, 0));
+        pushButton_search->setMaximumSize(QSize(200, 50));
+        pushButton_search->setFont(font);
+
+        horizontalLayout->addWidget(pushButton_search);
 
 
         gridLayout_4->addLayout(horizontalLayout, 1, 0, 1, 1);
 
         tableWidget_displayUser = new Table(page_selectUser);
         tableWidget_displayUser->setObjectName(QString::fromUtf8("tableWidget_displayUser"));
-        QFont font4;
-        font4.setPointSize(12);
-        tableWidget_displayUser->setFont(font4);
+        QFont font2;
+        font2.setPointSize(12);
+        tableWidget_displayUser->setFont(font2);
 
-        gridLayout_4->addWidget(tableWidget_displayUser, 2, 0, 1, 1);
+        gridLayout_4->addWidget(tableWidget_displayUser, 3, 0, 1, 1);
 
-        pushButton_confirmUser = new QPushButton(page_selectUser);
-        pushButton_confirmUser->setObjectName(QString::fromUtf8("pushButton_confirmUser"));
-        pushButton_confirmUser->setMinimumSize(QSize(0, 50));
-        pushButton_confirmUser->setFont(font);
+        label_title_selectUser = new QLabel(page_selectUser);
+        label_title_selectUser->setObjectName(QString::fromUtf8("label_title_selectUser"));
+        QFont font3;
+        font3.setPointSize(18);
+        label_title_selectUser->setFont(font3);
+        label_title_selectUser->setAlignment(Qt::AlignCenter);
+        label_title_selectUser->setMargin(5);
 
-        gridLayout_4->addWidget(pushButton_confirmUser, 3, 0, 1, 1);
+        gridLayout_4->addWidget(label_title_selectUser, 0, 0, 1, 1);
+
+        label_querystatus = new QLabel(page_selectUser);
+        label_querystatus->setObjectName(QString::fromUtf8("label_querystatus"));
+
+        gridLayout_4->addWidget(label_querystatus, 2, 0, 1, 1);
 
         stackedWidget->addWidget(page_selectUser);
         page_registerUser = new QWidget();
@@ -316,7 +369,7 @@ public:
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         label_title_registerUser = new QLabel(page_registerUser);
         label_title_registerUser->setObjectName(QString::fromUtf8("label_title_registerUser"));
-        label_title_registerUser->setFont(font2);
+        label_title_registerUser->setFont(font3);
         label_title_registerUser->setAlignment(Qt::AlignCenter);
         label_title_registerUser->setMargin(5);
 
@@ -455,7 +508,7 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         label_title_taskName = new QLabel(page_task);
         label_title_taskName->setObjectName(QString::fromUtf8("label_title_taskName"));
-        label_title_taskName->setFont(font2);
+        label_title_taskName->setFont(font3);
         label_title_taskName->setAlignment(Qt::AlignCenter);
         label_title_taskName->setMargin(5);
 
@@ -499,7 +552,7 @@ public:
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         label_title_computation = new QLabel(page_computation);
         label_title_computation->setObjectName(QString::fromUtf8("label_title_computation"));
-        label_title_computation->setFont(font2);
+        label_title_computation->setFont(font3);
         label_title_computation->setAlignment(Qt::AlignCenter);
         label_title_computation->setMargin(5);
 
@@ -517,7 +570,7 @@ public:
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         label_title_reportGen = new QLabel(page_reportGen);
         label_title_reportGen->setObjectName(QString::fromUtf8("label_title_reportGen"));
-        label_title_reportGen->setFont(font2);
+        label_title_reportGen->setFont(font3);
         label_title_reportGen->setAlignment(Qt::AlignCenter);
         label_title_reportGen->setMargin(5);
 
@@ -535,7 +588,7 @@ public:
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         label_title_configuration = new QLabel(page_configuration);
         label_title_configuration->setObjectName(QString::fromUtf8("label_title_configuration"));
-        label_title_configuration->setFont(font2);
+        label_title_configuration->setFont(font3);
         label_title_configuration->setAlignment(Qt::AlignCenter);
         label_title_configuration->setMargin(5);
 
@@ -563,9 +616,6 @@ public:
 
         label_stat = new QLabel(centralwidget);
         label_stat->setObjectName(QString::fromUtf8("label_stat"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(label_stat->sizePolicy().hasHeightForWidth());
         label_stat->setSizePolicy(sizePolicy3);
         label_stat->setMaximumSize(QSize(16777215, 20));
@@ -607,9 +657,12 @@ public:
         label_connection->setText(QCoreApplication::translate("MainWindow", "\350\277\236\346\216\245\347\212\266\346\200\201", nullptr));
         label_db->setText(QCoreApplication::translate("MainWindow", "\347\256\241\347\220\206\345\221\230", nullptr));
         label_username->setText(QCoreApplication::translate("MainWindow", "\345\275\223\345\211\215\347\224\250\346\210\267", nullptr));
+        label_stuname->setText(QCoreApplication::translate("MainWindow", "\345\247\223\345\220\215", nullptr));
+        label_sno->setText(QCoreApplication::translate("MainWindow", "\345\255\246\345\217\267", nullptr));
+        label_gender->setText(QCoreApplication::translate("MainWindow", "\346\200\247\345\210\253", nullptr));
+        pushButton_search->setText(QCoreApplication::translate("MainWindow", "\346\237\245\346\211\276", nullptr));
         label_title_selectUser->setText(QCoreApplication::translate("MainWindow", "\351\200\211\346\213\251\345\255\246\347\224\237", nullptr));
-        label_inputSearchUserHint->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\247\223\345\220\215\357\274\232", nullptr));
-        pushButton_confirmUser->setText(QCoreApplication::translate("MainWindow", "\347\241\256\350\256\244\347\224\250\346\210\267", nullptr));
+        label_querystatus->setText(QString());
         label_title_registerUser->setText(QCoreApplication::translate("MainWindow", "\346\263\250\345\206\214\345\255\246\347\224\237", nullptr));
         label_inputRegisterUserHint_name->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\220\215\347\247\260\357\274\232", nullptr));
         label_inputRegisterUserHint_sex->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\255\246\345\217\267\357\274\232", nullptr));

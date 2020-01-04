@@ -25,6 +25,7 @@ public:
     void regulateInput();
     void connectInterfaces();
     void fillLineEditDefault();
+    void configuration();
 
 private:
     Ui::Login *ui;

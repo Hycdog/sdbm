@@ -9,11 +9,16 @@ LoginWindow::LoginWindow(QWidget *parent)
        regulateInput();
        fillLineEditDefault();
        connectInterfaces();
+       configuration();
 }
 
 LoginWindow::~LoginWindow()
 {
     delete ui;
+}
+
+void LoginWindow::configuration(){
+    ui->lineEdit_password->setFocus();
 }
 
 void LoginWindow::connectInterfaces(){
