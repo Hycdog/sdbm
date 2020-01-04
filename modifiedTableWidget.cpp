@@ -7,7 +7,7 @@ Table::Table(QWidget *parent){
     this->verticalHeader()->setHidden(true);
     this->setSelectionMode(QTableWidget::SingleSelection);
     this->setSelectionBehavior(QAbstractItemView::SelectRows);
-    connect(this, SIGNAL(cellEntered), this, SLOT(mouseOnRow), Qt::DirectConnection);
+    connect(this, SIGNAL(cellEntered(int, int)), this, SLOT(mouseOnRow(int, int)), Qt::DirectConnection);
 }
 
 void Table::leaveEvent(QEvent event){

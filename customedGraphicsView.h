@@ -38,10 +38,10 @@ public:
 
 
 signals:
-   void sigLeave(bool);
-   void sigEnter(bool);
-   void sigPointSelectionFinished(vector<QPointF>,vector<QLineF>);
-   void sigLineDrawn(QLineF);
+   void sigLeave(bool state);
+   void sigEnter(bool state);
+   void sigPointSelectionFinished(vector<QPointF> vector_point,vector<QLineF> vector_line);
+   void sigLineDrawn(QLineF line);
 
 private:
    QPoint* lastMousePos;
