@@ -80,28 +80,6 @@
            <number>5</number>
           </property>
           <item>
-           <widget class="QGraphicsView" name="graphicsView_logo">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>200</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>300</width>
-              <height>300</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="Line" name="line_12">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -160,7 +138,28 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_doctor">
+           <widget class="QLabel" name="label_connection">
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>连接状态</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_db">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -193,7 +192,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_user">
+           <widget class="QLabel" name="label_username">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -766,7 +765,7 @@
      </widget>
     </item>
     <item row="3" column="0">
-     <widget class="QLabel" name="label_version">
+     <widget class="QLabel" name="label_stat">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>

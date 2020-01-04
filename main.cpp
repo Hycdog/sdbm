@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "loginwindow.h"
 #include <QApplication>
 #include <QDir>
 #include <QFile>
@@ -10,8 +10,7 @@ int main(int argc, char *argv[])
     qss.open(QFile::ReadOnly);
     qApp->setStyleSheet(qss.readAll());
     qss.close();
-    MainWindow w;
-
-    w.show();
+    LoginWindow l;
+    l.show();
     return a.exec();
 }

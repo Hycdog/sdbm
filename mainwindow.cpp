@@ -1,21 +1,33 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QSqlDatabase* dbconn, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    this->dbconn = dbconn;
     ui->setupUi(this);
-    this->PopulateTree();
-//    connect(this->ui->treeWidget,SIGNAL(itemClicked),this, SLOT(redirect));
+    populateTree();
+    setCustomedStyleSheet();
+    setupClockThread();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    clk_thrd->terminate();
+    clk_thrd->wait();
+    clk_thrd->deleteLater();
 }
 
-void MainWindow::PopulateTree(){
+void MainWindow::setupClockThread(){
+    clk_thrd = new ClockThread(dbconn);
+    connect(clk_thrd,SIGNAL(sigDateTime(QString)),this, SLOT(updateTime(QString)));
+    connect(clk_thrd,SIGNAL(sigValidateConn(bool)),this, SLOT(updateStat(bool)));
+    clk_thrd->start();
+}
+
+void MainWindow::populateTree(){
     QTreeWidget* tree = this->ui->treeWidget;
     QTreeWidgetItem* item0 = new QTreeWidgetItem();
     item0->setText(0, "查找学生");
@@ -43,4 +55,28 @@ void MainWindow::redirect(QTreeWidgetItem* item, int column){
     else if (item->text(0) == "学生拍照"){
         stackedWidget->setCurrentIndex(2);
     }
+}
+
+void MainWindow::updateTime(QString datetime){
+    ui->label_date->setText(datetime);
+    ui->label_date->repaint();
+}
+
+void MainWindow::updateStat(bool status){
+    ui->label_connection->setStyleSheet(status ? "color:green": "color:red");
+    ui->label_connection->setText(status ? "连接正常": "断开连接");
+}
+
+void MainWindow::setCustomedStyleSheet(){
+    ui->label_date->setStyleSheet("color: blue;");
+    ui->label_username->setStyleSheet("color:rgb(6, 82, 171);");
+    ui->label_db->setStyleSheet("color:rgb(137, 207, 240);");
+}
+
+void MainWindow::setUsername(QString username){
+    ui->label_username->setText("用户名："+username);
+}
+
+void MainWindow::setDB(QString db){
+    ui->label_db->setText("数据库："+db);
 }
