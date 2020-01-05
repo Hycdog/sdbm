@@ -174,7 +174,7 @@ public:
         label_date->setObjectName(QString::fromUtf8("label_date"));
         sizePolicy.setHeightForWidth(label_date->sizePolicy().hasHeightForWidth());
         label_date->setSizePolicy(sizePolicy);
-        label_date->setMinimumSize(QSize(100, 0));
+        label_date->setMinimumSize(QSize(300, 0));
         label_date->setMaximumSize(QSize(300, 50));
         QFont font;
         font.setPointSize(15);
@@ -359,6 +359,7 @@ public:
 
         label_querystatus = new QLabel(page_selectUser);
         label_querystatus->setObjectName(QString::fromUtf8("label_querystatus"));
+        label_querystatus->setMaximumSize(QSize(1000, 16777215));
 
         gridLayout_4->addWidget(label_querystatus, 2, 0, 1, 1);
 

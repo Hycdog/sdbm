@@ -5,6 +5,7 @@
 #include <QFile>
 int main(int argc, char *argv[])
 {
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication a(argc, argv);
     QFile qss(QDir::currentPath()+"/dark.qss");
     qss.open(QFile::ReadOnly);

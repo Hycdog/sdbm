@@ -63,7 +63,7 @@ bool LoginWindow::connectDB(){
         if(!db->open())
         {
             qDebug()<<"不能连接"<<"connect to mysql error"<<db->lastError().text();
-            QMessageBox warn(QMessageBox::Warning, "连接失败", "连接数据库失败！", QMessageBox::Yes);
+            QMessageBox warn(QMessageBox::Warning, "连接失败", "连接数据库失败！"+db->lastError().text(), QMessageBox::Yes);
             warn.button(QMessageBox::Yes)->setText("确认");
             warn.setStyleSheet(
                 "QPushButton {"

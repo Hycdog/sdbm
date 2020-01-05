@@ -38,14 +38,30 @@ void MainWindow::getInformation(){
     QString xm = ui->lineEdit_stuname->text();
     QString xh = ui->lineEdit_sno->text();
     QString xb = ui->comboBox_gender->currentText();
-    QString sql = "select xh,xm,xb,csrq,jg,sjhm,mc from s inner join d on s.yxh=d.yxh where xh like '%"+xh+"%' and xm like '%"+xm+"%'";
+    QString sql = "select xh,xm,xb,csrq,jg,sjhm,mc from s inner join d on s.yxh=d.yxh where xh like :xh and xm like :xm";
     if(xb != "全部"){
         sql += " and xb='"+xb+"'";
     }
-    qDebug()<<sql;
+//    qDebug()<<Validator::SqlValidator(sql);
     QSqlQuery result = QSqlQuery(*dbconn);
     result.prepare(sql);
+    result.bindValue(":xm",QString("%%1%").arg(xm));
+    result.bindValue(":xh",QString("%%1%").arg(xh));
     result.exec();
+    QString errMsg = result.lastError().text();
+    int recCnt = result.size();
+    if (recCnt > 0){
+        ui->label_querystatus->setText("共找到 "+QString::number(recCnt)+" 条记录.");
+    }
+    else{
+        ui->tableWidget_displayUser->horizontalHeader()->setHidden(true);
+        if(errMsg.size() == 1){
+           ui->label_querystatus->setText("未找到相关记录.");
+        }
+        else{
+            ui->label_querystatus->setText("查询发生错误.");
+        }
+    }
     while(result.next()){
         QSqlRecord record = result.record();
         int fieldCount = record.count();

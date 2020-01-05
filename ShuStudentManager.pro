@@ -35,7 +35,7 @@ FORMS += \
     mainwindow.ui \
     login.ui
 
-
+RC_ICONS = logo.ico
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

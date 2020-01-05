@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QEvent>
 #include <QSqlDatabase>
+#include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include "clockThread.h"

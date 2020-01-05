@@ -70,7 +70,7 @@ public:
     {
         if (Login->objectName().isEmpty())
             Login->setObjectName(QString::fromUtf8("Login"));
-        Login->resize(967, 718);
+        Login->resize(984, 718);
         gridLayout = new QGridLayout(Login);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         verticalSpacer = new QSpacerItem(20, 0, QSizePolicy::Minimum, QSizePolicy::Fixed);
