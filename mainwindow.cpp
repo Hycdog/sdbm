@@ -99,15 +99,18 @@ void MainWindow::insertTableRow(map<QString, QString> feedDict){
 
 void MainWindow::populateTree(){
     QTreeWidget* tree = this->ui->treeWidget;
+    tree->setIndentation(0);
     QTreeWidgetItem* item0 = new QTreeWidgetItem();
     item0->setText(0, "查找学生");
+    item0->setTextAlignment(0,Qt::AlignHCenter | Qt::AlignVCenter);
     QTreeWidgetItem* item1 = new QTreeWidgetItem();
     item1->setText(0, "注册学生");
+    item1->setTextAlignment(0,Qt::AlignHCenter | Qt::AlignVCenter);
     QTreeWidgetItem* item2 = new QTreeWidgetItem();
     item2->setText(0, "学生拍照");
     tree->addTopLevelItem(item0);
     tree->addTopLevelItem(item1);
-    tree->addTopLevelItem(item2);
+//    tree->addTopLevelItem(item2);
     tree->header()->hide();
     connect(tree, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(redirect(QTreeWidgetItem*,int)));
 }

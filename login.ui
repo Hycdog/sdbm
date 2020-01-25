@@ -78,7 +78,7 @@
         </font>
        </property>
        <property name="text">
-        <string>欢迎访问学生数据库管理系统</string>
+        <string>学生数据库管理系统</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -156,9 +156,21 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_hostname">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>250</width>
            <height>50</height>
           </size>
          </property>
@@ -242,9 +254,21 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_port">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>250</width>
            <height>50</height>
           </size>
          </property>
@@ -328,9 +352,21 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_dbname">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>250</width>
            <height>50</height>
           </size>
          </property>
@@ -414,9 +450,21 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_username">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>250</width>
            <height>50</height>
           </size>
          </property>
@@ -466,7 +514,7 @@
        <item>
         <widget class="QLabel" name="label_password">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -500,9 +548,21 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit_password">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>50</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>250</width>
            <height>50</height>
           </size>
          </property>

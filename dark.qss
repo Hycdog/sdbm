@@ -146,13 +146,14 @@ QRadioButton
     outline: none;
     color: #eff0f1;
     margin-bottom: 0.2ex;
+    font: 25px;
+    padding: 0.5ex;
 }
 
 QRadioButton:disabled
 {
     color: #76797c;
 }
-
 QRadioButton::indicator:unchecked,
 QRadioButton::indicator:unchecked:focus
 {
@@ -673,6 +674,7 @@ QComboBox
     border: 0.1ex solid #76797c;
     border-radius: 0.2ex;
     padding: 0.5ex;
+    min-width: 7.5ex;
 }
 
 QPushButton:checked
@@ -739,6 +741,7 @@ QComboBox::drop-down
 {
     subcontrol-origin: padding;
     subcontrol-position: top right;
+    width: 1.5ex;
 
     border-left-width: 0ex;
     border-left-color: darkgray;
@@ -750,8 +753,8 @@ QComboBox::drop-down
 QComboBox::down-arrow
 {
     border-image: url(./dark/down_arrow_disabled.svg);
-    width: 2.9ex;
-    height: 2.6ex;
+    width: 0.9ex;
+    height: 0.6ex;
 }
 
 QComboBox::down-arrow:on,
@@ -759,8 +762,8 @@ QComboBox::down-arrow:hover,
 QComboBox::down-arrow:focus
 {
     border-image: url(./dark/down_arrow.svg);
-    width: 2.9ex;
-    height: 2.6ex;
+    width: 0.9ex;
+    height: 0.6ex;
 }
 
 QAbstractSpinBox
@@ -1180,9 +1183,10 @@ QDockWidget::close-button:pressed
 
 QTreeWidget{
     font-family: "Simsun";
-    font-size:20px;
+    font-size:18px;
     border-radius: 8px;
     border: 0px solid #3daee9;
+    text-align: center;
 }
 
 QTreeWidget:hover{
@@ -1203,12 +1207,15 @@ QListView
     border: 0ex solid #76797c;
     background-color: #232629;
     size-hint:50;
+
 }
 
 QTreeWidget::item{
-    background-color: qlineargradient(x1: 0.5, y1: 0 x2: 0.5, y2: 1, stop: 0 #3eeff9, stop: 1 #0000ff);
-    height:40px;
-    border-radius: 1px;
+    background-color: qlineargradient(x1: 0.5, y1: 0 x2: 0.5, y2: 1, stop: 0 #3eeff9, stop: 0.9 #0000ff);
+    height:34px;
+    border-radius: 6px;
+    padding: 1.5ex;
+
 }
 QTreeWidget::item::hover{
     background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:1, fx:0.5, fy:0.5, stop:0 #ffffff, stop:0.6 #3daee9, stop:1 #0000ff);
@@ -1448,14 +1455,17 @@ QHeaderView
     border-radius: 0px;
     margin: 0px;
     padding: 0px;
-    font-weight: bold;
+
 }
 
 QHeaderView::section
 {
-    color: white;
-    background-color: #334e5e;
-    font-weight: bold;
+    background-color: #31363b;
+    color: #eff0f1;
+    padding: 0.5ex;
+    border: 0.1ex solid #76797c;
+    border-radius: 0px;
+    text-align: center;
 }
 
 QHeaderView::section::vertical::first,

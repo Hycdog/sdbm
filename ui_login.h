@@ -134,7 +134,13 @@ public:
 
         lineEdit_hostname = new QLineEdit(Login);
         lineEdit_hostname->setObjectName(QString::fromUtf8("lineEdit_hostname"));
-        lineEdit_hostname->setMaximumSize(QSize(16777215, 50));
+        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(lineEdit_hostname->sizePolicy().hasHeightForWidth());
+        lineEdit_hostname->setSizePolicy(sizePolicy2);
+        lineEdit_hostname->setMinimumSize(QSize(250, 50));
+        lineEdit_hostname->setMaximumSize(QSize(250, 50));
         QFont font2;
         font2.setPointSize(15);
         lineEdit_hostname->setFont(font2);
@@ -167,7 +173,10 @@ public:
 
         lineEdit_port = new QLineEdit(Login);
         lineEdit_port->setObjectName(QString::fromUtf8("lineEdit_port"));
-        lineEdit_port->setMaximumSize(QSize(16777215, 50));
+        sizePolicy2.setHeightForWidth(lineEdit_port->sizePolicy().hasHeightForWidth());
+        lineEdit_port->setSizePolicy(sizePolicy2);
+        lineEdit_port->setMinimumSize(QSize(250, 50));
+        lineEdit_port->setMaximumSize(QSize(250, 50));
         lineEdit_port->setFont(font2);
 
         horizontalLayout_6->addWidget(lineEdit_port);
@@ -198,7 +207,10 @@ public:
 
         lineEdit_dbname = new QLineEdit(Login);
         lineEdit_dbname->setObjectName(QString::fromUtf8("lineEdit_dbname"));
-        lineEdit_dbname->setMaximumSize(QSize(16777215, 50));
+        sizePolicy2.setHeightForWidth(lineEdit_dbname->sizePolicy().hasHeightForWidth());
+        lineEdit_dbname->setSizePolicy(sizePolicy2);
+        lineEdit_dbname->setMinimumSize(QSize(250, 50));
+        lineEdit_dbname->setMaximumSize(QSize(250, 50));
         lineEdit_dbname->setFont(font2);
 
         horizontalLayout_4->addWidget(lineEdit_dbname);
@@ -229,7 +241,10 @@ public:
 
         lineEdit_username = new QLineEdit(Login);
         lineEdit_username->setObjectName(QString::fromUtf8("lineEdit_username"));
-        lineEdit_username->setMaximumSize(QSize(16777215, 50));
+        sizePolicy2.setHeightForWidth(lineEdit_username->sizePolicy().hasHeightForWidth());
+        lineEdit_username->setSizePolicy(sizePolicy2);
+        lineEdit_username->setMinimumSize(QSize(250, 50));
+        lineEdit_username->setMaximumSize(QSize(250, 50));
         lineEdit_username->setFont(font2);
 
         horizontalLayout->addWidget(lineEdit_username);
@@ -249,8 +264,11 @@ public:
 
         label_password = new QLabel(Login);
         label_password->setObjectName(QString::fromUtf8("label_password"));
-        sizePolicy1.setHeightForWidth(label_password->sizePolicy().hasHeightForWidth());
-        label_password->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(label_password->sizePolicy().hasHeightForWidth());
+        label_password->setSizePolicy(sizePolicy3);
         label_password->setMinimumSize(QSize(150, 0));
         label_password->setMaximumSize(QSize(300, 50));
         label_password->setFont(font1);
@@ -260,7 +278,10 @@ public:
 
         lineEdit_password = new QLineEdit(Login);
         lineEdit_password->setObjectName(QString::fromUtf8("lineEdit_password"));
-        lineEdit_password->setMaximumSize(QSize(16777215, 50));
+        sizePolicy2.setHeightForWidth(lineEdit_password->sizePolicy().hasHeightForWidth());
+        lineEdit_password->setSizePolicy(sizePolicy2);
+        lineEdit_password->setMinimumSize(QSize(250, 50));
+        lineEdit_password->setMaximumSize(QSize(250, 50));
         QFont font3;
         font3.setPointSize(12);
         lineEdit_password->setFont(font3);
@@ -337,7 +358,7 @@ public:
     void retranslateUi(QDialog *Login)
     {
         Login->setWindowTitle(QCoreApplication::translate("Login", "Dialog", nullptr));
-        label_hello->setText(QCoreApplication::translate("Login", "\346\254\242\350\277\216\350\256\277\351\227\256\345\255\246\347\224\237\346\225\260\346\215\256\345\272\223\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
+        label_hello->setText(QCoreApplication::translate("Login", "\345\255\246\347\224\237\346\225\260\346\215\256\345\272\223\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
         label_hostname->setText(QCoreApplication::translate("Login", "\344\270\273\346\234\272\345\220\215\357\274\232", nullptr));
         label_port->setText(QCoreApplication::translate("Login", "\347\253\257\345\217\243\345\217\267\357\274\232", nullptr));
         label_dbname->setText(QCoreApplication::translate("Login", "\346\225\260\346\215\256\345\272\223\345\220\215\357\274\232", nullptr));
