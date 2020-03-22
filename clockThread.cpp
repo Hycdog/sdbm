@@ -13,7 +13,7 @@ void ClockThread::run(){
 }
 
 QString ClockThread::parseCurrentDateTime(){
-    return QDateTime::currentDateTime().toString("yyyy.mm.dd hh:mm:ss");
+    return QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss");
 }
 
 bool ClockThread::validateConn(){
