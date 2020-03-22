@@ -21,10 +21,10 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -69,29 +69,30 @@ public:
     QLabel *label_querystatus;
     QWidget *page_registerUser;
     QGridLayout *gridLayout_5;
-    QLabel *label_title_registerUser;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *label_inputRegisterUserHint_weight;
+    QLineEdit *lineEdit_registerUser_jg;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label_inputRegisterUserHint_sex;
+    QLineEdit *lineEdit_registerUser_sno;
+    QHBoxLayout *horizontalLayout_11;
+    QLabel *label_inputRegisterUserHint_age_2;
+    QLineEdit *lineEdit_registerUser_csrq;
+    QHBoxLayout *horizontalLayout_9;
+    QLabel *label_inputRegisterUserHint_weight_2;
+    QComboBox *comboBox_dep;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *label_inputRegisterUserHint_height;
+    QLineEdit *lineEdit_registerUser_sjhm;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *label_inputRegisterUserHint_age;
+    QLineEdit *lineEdit_registerUser_sex;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_inputRegisterUserHint_name;
     QLineEdit *lineEdit_registerUser_name;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *label_inputRegisterUserHint_sex;
-    QLineEdit *lineEdit_registerUser_sex;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *label_inputRegisterUserHint_age;
-    QLineEdit *lineEdit_registerUser_age;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *label_inputRegisterUserHint_height;
-    QLineEdit *lineEdit_registerUser_height;
-    QHBoxLayout *horizontalLayout_11;
-    QLabel *label_inputRegisterUserHint_age_2;
-    QLineEdit *lineEdit_registerUser_age_2;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *label_inputRegisterUserHint_weight;
-    QLineEdit *lineEdit_registerUser_weight;
-    QHBoxLayout *horizontalLayout_9;
-    QLabel *label_inputRegisterUserHint_comment;
-    QTextEdit *textEdit_comment;
+    QLabel *label_title_registerUser;
     QPushButton *pushButton_register;
+    QSpacerItem *verticalSpacer;
     QWidget *page_task;
     QGridLayout *gridLayout_2;
     QLabel *label_title_taskName;
@@ -122,7 +123,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(926, 580);
+        MainWindow->resize(1340, 573);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -368,13 +369,109 @@ public:
         page_registerUser->setObjectName(QString::fromUtf8("page_registerUser"));
         gridLayout_5 = new QGridLayout(page_registerUser);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        label_title_registerUser = new QLabel(page_registerUser);
-        label_title_registerUser->setObjectName(QString::fromUtf8("label_title_registerUser"));
-        label_title_registerUser->setFont(font3);
-        label_title_registerUser->setAlignment(Qt::AlignCenter);
-        label_title_registerUser->setMargin(5);
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        label_inputRegisterUserHint_weight = new QLabel(page_registerUser);
+        label_inputRegisterUserHint_weight->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_weight"));
+        label_inputRegisterUserHint_weight->setFont(font);
 
-        gridLayout_5->addWidget(label_title_registerUser, 0, 0, 1, 1);
+        horizontalLayout_8->addWidget(label_inputRegisterUserHint_weight);
+
+        lineEdit_registerUser_jg = new QLineEdit(page_registerUser);
+        lineEdit_registerUser_jg->setObjectName(QString::fromUtf8("lineEdit_registerUser_jg"));
+        lineEdit_registerUser_jg->setFont(font);
+
+        horizontalLayout_8->addWidget(lineEdit_registerUser_jg);
+
+
+        gridLayout_5->addLayout(horizontalLayout_8, 6, 0, 1, 1);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        label_inputRegisterUserHint_sex = new QLabel(page_registerUser);
+        label_inputRegisterUserHint_sex->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_sex"));
+        label_inputRegisterUserHint_sex->setFont(font);
+
+        horizontalLayout_4->addWidget(label_inputRegisterUserHint_sex);
+
+        lineEdit_registerUser_sno = new QLineEdit(page_registerUser);
+        lineEdit_registerUser_sno->setObjectName(QString::fromUtf8("lineEdit_registerUser_sno"));
+        lineEdit_registerUser_sno->setFont(font);
+
+        horizontalLayout_4->addWidget(lineEdit_registerUser_sno);
+
+
+        gridLayout_5->addLayout(horizontalLayout_4, 2, 0, 1, 1);
+
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
+        label_inputRegisterUserHint_age_2 = new QLabel(page_registerUser);
+        label_inputRegisterUserHint_age_2->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_age_2"));
+        label_inputRegisterUserHint_age_2->setFont(font);
+
+        horizontalLayout_11->addWidget(label_inputRegisterUserHint_age_2);
+
+        lineEdit_registerUser_csrq = new QLineEdit(page_registerUser);
+        lineEdit_registerUser_csrq->setObjectName(QString::fromUtf8("lineEdit_registerUser_csrq"));
+        lineEdit_registerUser_csrq->setFont(font);
+
+        horizontalLayout_11->addWidget(lineEdit_registerUser_csrq);
+
+
+        gridLayout_5->addLayout(horizontalLayout_11, 5, 0, 1, 1);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        label_inputRegisterUserHint_weight_2 = new QLabel(page_registerUser);
+        label_inputRegisterUserHint_weight_2->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_weight_2"));
+        label_inputRegisterUserHint_weight_2->setFont(font);
+
+        horizontalLayout_9->addWidget(label_inputRegisterUserHint_weight_2);
+
+        comboBox_dep = new QComboBox(page_registerUser);
+        comboBox_dep->setObjectName(QString::fromUtf8("comboBox_dep"));
+        sizePolicy.setHeightForWidth(comboBox_dep->sizePolicy().hasHeightForWidth());
+        comboBox_dep->setSizePolicy(sizePolicy);
+        comboBox_dep->setFont(font);
+
+        horizontalLayout_9->addWidget(comboBox_dep);
+
+
+        gridLayout_5->addLayout(horizontalLayout_9, 7, 0, 1, 1);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        label_inputRegisterUserHint_height = new QLabel(page_registerUser);
+        label_inputRegisterUserHint_height->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_height"));
+        label_inputRegisterUserHint_height->setFont(font);
+
+        horizontalLayout_7->addWidget(label_inputRegisterUserHint_height);
+
+        lineEdit_registerUser_sjhm = new QLineEdit(page_registerUser);
+        lineEdit_registerUser_sjhm->setObjectName(QString::fromUtf8("lineEdit_registerUser_sjhm"));
+        lineEdit_registerUser_sjhm->setFont(font);
+
+        horizontalLayout_7->addWidget(lineEdit_registerUser_sjhm);
+
+
+        gridLayout_5->addLayout(horizontalLayout_7, 4, 0, 1, 1);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        label_inputRegisterUserHint_age = new QLabel(page_registerUser);
+        label_inputRegisterUserHint_age->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_age"));
+        label_inputRegisterUserHint_age->setFont(font);
+
+        horizontalLayout_6->addWidget(label_inputRegisterUserHint_age);
+
+        lineEdit_registerUser_sex = new QLineEdit(page_registerUser);
+        lineEdit_registerUser_sex->setObjectName(QString::fromUtf8("lineEdit_registerUser_sex"));
+        lineEdit_registerUser_sex->setFont(font);
+
+        horizontalLayout_6->addWidget(lineEdit_registerUser_sex);
+
+
+        gridLayout_5->addLayout(horizontalLayout_6, 3, 0, 1, 1);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -393,107 +490,13 @@ public:
 
         gridLayout_5->addLayout(horizontalLayout_3, 1, 0, 1, 1);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        label_inputRegisterUserHint_sex = new QLabel(page_registerUser);
-        label_inputRegisterUserHint_sex->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_sex"));
-        label_inputRegisterUserHint_sex->setFont(font);
+        label_title_registerUser = new QLabel(page_registerUser);
+        label_title_registerUser->setObjectName(QString::fromUtf8("label_title_registerUser"));
+        label_title_registerUser->setFont(font3);
+        label_title_registerUser->setAlignment(Qt::AlignCenter);
+        label_title_registerUser->setMargin(5);
 
-        horizontalLayout_4->addWidget(label_inputRegisterUserHint_sex);
-
-        lineEdit_registerUser_sex = new QLineEdit(page_registerUser);
-        lineEdit_registerUser_sex->setObjectName(QString::fromUtf8("lineEdit_registerUser_sex"));
-        lineEdit_registerUser_sex->setFont(font);
-
-        horizontalLayout_4->addWidget(lineEdit_registerUser_sex);
-
-
-        gridLayout_5->addLayout(horizontalLayout_4, 2, 0, 1, 1);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        label_inputRegisterUserHint_age = new QLabel(page_registerUser);
-        label_inputRegisterUserHint_age->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_age"));
-        label_inputRegisterUserHint_age->setFont(font);
-
-        horizontalLayout_6->addWidget(label_inputRegisterUserHint_age);
-
-        lineEdit_registerUser_age = new QLineEdit(page_registerUser);
-        lineEdit_registerUser_age->setObjectName(QString::fromUtf8("lineEdit_registerUser_age"));
-        lineEdit_registerUser_age->setFont(font);
-
-        horizontalLayout_6->addWidget(lineEdit_registerUser_age);
-
-
-        gridLayout_5->addLayout(horizontalLayout_6, 3, 0, 1, 1);
-
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        label_inputRegisterUserHint_height = new QLabel(page_registerUser);
-        label_inputRegisterUserHint_height->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_height"));
-        label_inputRegisterUserHint_height->setFont(font);
-
-        horizontalLayout_7->addWidget(label_inputRegisterUserHint_height);
-
-        lineEdit_registerUser_height = new QLineEdit(page_registerUser);
-        lineEdit_registerUser_height->setObjectName(QString::fromUtf8("lineEdit_registerUser_height"));
-        lineEdit_registerUser_height->setFont(font);
-
-        horizontalLayout_7->addWidget(lineEdit_registerUser_height);
-
-
-        gridLayout_5->addLayout(horizontalLayout_7, 4, 0, 1, 1);
-
-        horizontalLayout_11 = new QHBoxLayout();
-        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
-        label_inputRegisterUserHint_age_2 = new QLabel(page_registerUser);
-        label_inputRegisterUserHint_age_2->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_age_2"));
-        label_inputRegisterUserHint_age_2->setFont(font);
-
-        horizontalLayout_11->addWidget(label_inputRegisterUserHint_age_2);
-
-        lineEdit_registerUser_age_2 = new QLineEdit(page_registerUser);
-        lineEdit_registerUser_age_2->setObjectName(QString::fromUtf8("lineEdit_registerUser_age_2"));
-        lineEdit_registerUser_age_2->setFont(font);
-
-        horizontalLayout_11->addWidget(lineEdit_registerUser_age_2);
-
-
-        gridLayout_5->addLayout(horizontalLayout_11, 5, 0, 1, 1);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        label_inputRegisterUserHint_weight = new QLabel(page_registerUser);
-        label_inputRegisterUserHint_weight->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_weight"));
-        label_inputRegisterUserHint_weight->setFont(font);
-
-        horizontalLayout_8->addWidget(label_inputRegisterUserHint_weight);
-
-        lineEdit_registerUser_weight = new QLineEdit(page_registerUser);
-        lineEdit_registerUser_weight->setObjectName(QString::fromUtf8("lineEdit_registerUser_weight"));
-        lineEdit_registerUser_weight->setFont(font);
-
-        horizontalLayout_8->addWidget(lineEdit_registerUser_weight);
-
-
-        gridLayout_5->addLayout(horizontalLayout_8, 6, 0, 1, 1);
-
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        label_inputRegisterUserHint_comment = new QLabel(page_registerUser);
-        label_inputRegisterUserHint_comment->setObjectName(QString::fromUtf8("label_inputRegisterUserHint_comment"));
-        label_inputRegisterUserHint_comment->setFont(font);
-
-        horizontalLayout_9->addWidget(label_inputRegisterUserHint_comment);
-
-
-        gridLayout_5->addLayout(horizontalLayout_9, 7, 0, 1, 1);
-
-        textEdit_comment = new QTextEdit(page_registerUser);
-        textEdit_comment->setObjectName(QString::fromUtf8("textEdit_comment"));
-        textEdit_comment->setFont(font);
-
-        gridLayout_5->addWidget(textEdit_comment, 8, 0, 1, 1);
+        gridLayout_5->addWidget(label_title_registerUser, 0, 0, 1, 1);
 
         pushButton_register = new QPushButton(page_registerUser);
         pushButton_register->setObjectName(QString::fromUtf8("pushButton_register"));
@@ -501,6 +504,10 @@ public:
         pushButton_register->setFont(font);
 
         gridLayout_5->addWidget(pushButton_register, 9, 0, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_5->addItem(verticalSpacer, 8, 0, 1, 1);
 
         stackedWidget->addWidget(page_registerUser);
         page_task = new QWidget();
@@ -642,10 +649,29 @@ public:
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+        QWidget::setTabOrder(lineEdit_registerUser_name, lineEdit_registerUser_sno);
+        QWidget::setTabOrder(lineEdit_registerUser_sno, lineEdit_registerUser_sex);
+        QWidget::setTabOrder(lineEdit_registerUser_sex, lineEdit_registerUser_sjhm);
+        QWidget::setTabOrder(lineEdit_registerUser_sjhm, lineEdit_registerUser_csrq);
+        QWidget::setTabOrder(lineEdit_registerUser_csrq, lineEdit_registerUser_jg);
+        QWidget::setTabOrder(lineEdit_registerUser_jg, comboBox_dep);
+        QWidget::setTabOrder(comboBox_dep, pushButton_register);
+        QWidget::setTabOrder(pushButton_register, treeWidget);
+        QWidget::setTabOrder(treeWidget, tableWidget_displayUser);
+        QWidget::setTabOrder(tableWidget_displayUser, comboBox_gender);
+        QWidget::setTabOrder(comboBox_gender, lineEdit_sno);
+        QWidget::setTabOrder(lineEdit_sno, pushButton_search);
+        QWidget::setTabOrder(pushButton_search, lineEdit_stuname);
+        QWidget::setTabOrder(lineEdit_stuname, pushButton_loadImage);
+        QWidget::setTabOrder(pushButton_loadImage, pushButton_cameraShot);
+        QWidget::setTabOrder(pushButton_cameraShot, graphicsView_task);
+        QWidget::setTabOrder(graphicsView_task, graphicsView_comp);
+        QWidget::setTabOrder(graphicsView_comp, graphicsView_report);
+        QWidget::setTabOrder(graphicsView_report, graphicsView_configuration);
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -664,14 +690,14 @@ public:
         pushButton_search->setText(QCoreApplication::translate("MainWindow", "\346\237\245\346\211\276", nullptr));
         label_title_selectUser->setText(QCoreApplication::translate("MainWindow", "\351\200\211\346\213\251\345\255\246\347\224\237", nullptr));
         label_querystatus->setText(QString());
-        label_title_registerUser->setText(QCoreApplication::translate("MainWindow", "\346\263\250\345\206\214\345\255\246\347\224\237", nullptr));
-        label_inputRegisterUserHint_name->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\220\215\347\247\260\357\274\232", nullptr));
-        label_inputRegisterUserHint_sex->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\255\246\345\217\267\357\274\232", nullptr));
-        label_inputRegisterUserHint_age->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\255\246\351\231\242\357\274\232", nullptr));
-        label_inputRegisterUserHint_height->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\346\211\213\346\234\272\345\217\267\347\240\201\357\274\232", nullptr));
-        label_inputRegisterUserHint_age_2->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\207\272\347\224\237\346\227\245\346\234\237\357\274\232", nullptr));
         label_inputRegisterUserHint_weight->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\347\261\215\350\264\257\357\274\232", nullptr));
-        label_inputRegisterUserHint_comment->setText(QCoreApplication::translate("MainWindow", "\345\244\207\346\263\250\357\274\232", nullptr));
+        label_inputRegisterUserHint_sex->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\255\246\345\217\267\357\274\232", nullptr));
+        label_inputRegisterUserHint_age_2->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\207\272\347\224\237\346\227\245\346\234\237\357\274\232", nullptr));
+        label_inputRegisterUserHint_weight_2->setText(QCoreApplication::translate("MainWindow", "\351\200\211\346\213\251\345\255\246\347\224\237\351\231\242\347\263\273\357\274\232", nullptr));
+        label_inputRegisterUserHint_height->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\346\211\213\346\234\272\345\217\267\347\240\201\357\274\232", nullptr));
+        label_inputRegisterUserHint_age->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\346\200\247\345\210\253\357\274\232", nullptr));
+        label_inputRegisterUserHint_name->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\220\215\347\247\260\357\274\232", nullptr));
+        label_title_registerUser->setText(QCoreApplication::translate("MainWindow", "\346\263\250\345\206\214\345\255\246\347\224\237", nullptr));
         pushButton_register->setText(QCoreApplication::translate("MainWindow", "\346\263\250\345\206\214\347\224\250\346\210\267", nullptr));
         label_title_taskName->setText(QCoreApplication::translate("MainWindow", "\345\275\225\345\205\245\345\244\264\345\203\217", nullptr));
         pushButton_loadImage->setText(QCoreApplication::translate("MainWindow", "\345\212\240\350\275\275\345\233\276\347\211\207", nullptr));

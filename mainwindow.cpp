@@ -12,6 +12,9 @@ MainWindow::MainWindow(QSqlDatabase* dbconn, QWidget *parent)
     setupClockThread();
     setupComboBoxes();
     connectInterfaces();
+    setWindowTitle("学生数据库管理系统");
+    updateYxh();
+    getInformation();
 }
 
 MainWindow::~MainWindow()
@@ -24,13 +27,98 @@ MainWindow::~MainWindow()
 
 void MainWindow::connectInterfaces(){
     connect(ui->pushButton_search, SIGNAL(clicked()), this, SLOT(getInformation()));
+    connect(ui->pushButton_register, SIGNAL(clicked()), this, SLOT(registerUser()));
+    ui->tableWidget_displayUser->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->tableWidget_displayUser, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(generateMenu(const QPoint&)));
 }
 
+void MainWindow::deleteUser(QString username){
+    QMessageBox warn(QMessageBox::Warning, "删除失败", "删除失败！", QMessageBox::Yes);
+    warn.button(QMessageBox::Yes)->setText("确认");
+    warn.setStyleSheet(
+        "QPushButton {"
+        " font: bold 24px;"
+        "padding-left: 3ex;"
+        "padding-right: 3ex;"
+        "padding-top: 1ex;"
+        "padding-bottom: 1ex;"
+        "margin-left:0px;"
+        "}"
+        "QLabel { font:24px}"
+    );
+    QSqlQuery result = QSqlQuery(*dbconn);
+    QString sql = "delete from s where xh=:xh";
+    result.prepare(sql);
+    result.bindValue(":xh",QString("%1").arg(username));
+    result.exec();
+    QString errMsg = result.lastError().text();
+    if(errMsg.trimmed().length() > 0){
+        warn.setText(errMsg);
+        warn.exec();
+        qDebug()<<errMsg;
+        return;
+    }
+    else{
+        dbconn->commit();
+        getInformation();
+        warn.setWindowTitle("删除成功");
+        warn.setText("删除成功!");
+        warn.setIcon(QMessageBox::Information);
+        warn.exec();
 
+    }
+
+}
+
+void MainWindow::warnDelete(QString username){
+    DialogConfirm confirmDelete;
+    confirmDelete.setTitle("确认删除");
+    confirmDelete.setInfo("确认删除"+username+"?");
+
+    bool reply = confirmDelete.execute();
+    if (reply)
+        deleteUser(username);
+    else
+        return;
+}
+void MainWindow::generateMenu(const QPoint& pos){
+    QTableWidgetItem* item = ui->tableWidget_displayUser->itemAt(pos);
+    if(item == nullptr)  return;
+    int row_num = item->row();
+    QMenu menu;
+    QAction* item1 = menu.addAction("删除用户");
+    QAction* action = menu.exec(ui->tableWidget_displayUser->mapToGlobal(pos));
+    if(action == item1)
+    {
+        warnDelete(ui->tableWidget_displayUser->item(row_num, 0)->text());
+    }
+
+
+    else
+        return;
+}
 void MainWindow::clearTable(){
     QTableWidget* table = ui->tableWidget_displayUser;
     table->clear();
     table->setRowCount(0);
+}
+
+void MainWindow::updateYxh(){
+    QString sql = "select * from d";
+    QSqlQuery result = QSqlQuery(*dbconn);
+    result.prepare(sql);
+    result.exec();
+    QString errMsg = result.lastError().text();
+    while(result.next()){
+        QSqlRecord record = result.record();
+        int fieldCount = record.count();
+        map<QString, QString> feedDict;
+        for (int i=0; i<fieldCount; i++) {
+            feedDict.insert(pair<QString, QString>(record.fieldName(i),record.value(i).toString()));
+        }
+        ui->comboBox_dep->addItem(feedDict["mc"]);
+        feedDict.clear();
+    }
 }
 
 void MainWindow::getInformation(){
@@ -168,4 +256,151 @@ void MainWindow::updateStat(bool status){
 void MainWindow::updateTime(QString datetime){
     ui->label_date->setText(datetime);
     ui->label_date->repaint();
+}
+
+void MainWindow::registerUser(){
+    QString name = ui->lineEdit_registerUser_name->text();
+    QString sex = ui->lineEdit_registerUser_sex->text();
+    QString csrq = ui->lineEdit_registerUser_csrq->text();
+    QString sno = ui->lineEdit_registerUser_sno->text();
+    QString sjhm = ui->lineEdit_registerUser_sjhm->text();
+    QString jg = ui->lineEdit_registerUser_jg->text();
+    QString yxh_mc = ui->comboBox_dep->currentText();
+    QString yxh;
+    QString sql = "select * from d where mc=:mc";
+    QSqlQuery result = QSqlQuery(*dbconn);
+    result.prepare(sql);
+    result.bindValue(":mc",QString("%1").arg(yxh_mc));
+    result.exec();
+    while(result.next()){
+        QSqlRecord record = result.record();
+        int fieldCount = record.count();
+        map<QString, QString> feedDict;
+        for (int i=0; i<fieldCount; i++) {
+            feedDict.insert(pair<QString, QString>(record.fieldName(i),record.value(i).toString()));
+        }
+        yxh = feedDict["yxh"];
+        feedDict.clear();
+    }
+    QMessageBox warn(QMessageBox::Warning, "注册失败", "注册失败！", QMessageBox::Yes);
+    warn.button(QMessageBox::Yes)->setText("确认");
+    warn.setStyleSheet(
+        "QPushButton {"
+        " font: bold 24px;"
+        "padding-left: 3ex;"
+        "padding-right: 3ex;"
+        "padding-top: 1ex;"
+        "padding-bottom: 1ex;"
+        "margin-left:0px;"
+        "}"
+        "QLabel { font:24px}"
+    );
+    if(name.length() == 0){
+        warn.setText("姓名不能为空！");
+        warn.exec();
+        return;
+    }
+    if(sex != "女" && sex != "男"){
+        warn.setText("性别为男或女");
+        warn.exec();
+        return;
+    }
+    QStringList ymd = csrq.split("-");
+    bool ymd_ok = true;
+    if(ymd.length() != 3){
+        ymd_ok = false;
+    }
+    else{
+        bool* ok_y,*ok_m,*ok_d;
+        int y = ymd[0].toInt(ok_y);
+        int m = ymd[1].toInt(ok_m);
+        int d = ymd[2].toInt(ok_d);
+        if(!ok_y && ok_m && ok_d){
+            ymd_ok = false;
+        }
+        else{
+            if(m < 1 || m > 12 || d > 31 || d < 1 || y < 1900){
+                ymd_ok = false;
+            }
+            else{
+                if((m == 4 || m == 6 || m == 9 || m == 11 )&& d == 31){
+                    ymd_ok = false;
+                }
+                if(m == 2){
+                    if( d > 29){
+                        ymd_ok = false;
+                    }
+                    if(y%100 == 0 && y%400 != 0 || y%4 != 0){
+                        if(d == 29){
+                            ymd_ok = false;
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+    if(!ymd_ok){
+        warn.setText("日期不正确 日期格式为yyyy-mm-dd");
+        warn.exec();
+        return;
+    }
+    if(sno.length() == 0){
+        warn.setText("学号不能为空！");
+        warn.exec();
+        return;
+    }
+    sql = "select * from s inner join d on s.yxh=d.yxh where xh=:xh";
+    result.prepare(sql);
+    result.bindValue(":xh",QString("%1").arg(sno));
+    result.exec();
+    QString errMsg = result.lastError().text();
+    int recCnt = result.size();
+    if(recCnt>0){
+        warn.setText("学号已经存在！");
+        warn.exec();
+        return;
+    }
+
+    if(sjhm.length()!= 11){
+        warn.setText("手机号码不正确！");
+        warn.exec();
+        return;
+    }
+    if(jg.length()== 0){
+        warn.setText("籍贯不能为空！");
+        warn.exec();
+        return;
+    }
+    sql = "insert into s values(:xh, :xm, :xb, :csrq, :jg, :sjhm, :yxh)";
+    result.prepare(sql);
+    result.bindValue(":xh",QString("%1").arg(sno));
+    result.bindValue(":xm",QString("%1").arg(name));
+    result.bindValue(":xb",QString("%1").arg(sex));
+    result.bindValue(":csrq",QString("%1").arg(csrq));
+    result.bindValue(":jg",QString("%1").arg(jg));
+    result.bindValue(":sjhm",QString("%1").arg(sjhm));
+    result.bindValue(":yxh",QString("%1").arg(yxh));
+    result.exec();
+    errMsg = result.lastError().text();
+    if(errMsg.trimmed().length() > 0){
+        warn.setText(errMsg);
+        warn.exec();
+        qDebug()<<errMsg;
+        return;
+    }
+    else{
+        dbconn->commit();
+        warn.setWindowTitle("注册成功");
+        warn.setText("注册成功!");
+        warn.setIcon(QMessageBox::Information);
+        warn.exec();
+        QStackedWidget* stackedWidget = this->ui->stackedWidget;
+        stackedWidget->setCurrentIndex(0);
+        getInformation();
+    }
+    return;
+
+
 }

@@ -19,6 +19,7 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::configuration(){
     ui->lineEdit_password->setFocus();
+    setWindowTitle("学生数据库管理系统");
 }
 
 void LoginWindow::connectInterfaces(){
@@ -86,7 +87,7 @@ bool LoginWindow::connectDB(){
              mw = new MainWindow(db);
              mw->setUsername(ui->lineEdit_username->text());
              mw->setDB(ui->lineEdit_dbname->text());
-             mw->show();
+             mw->showMaximized();
              this->close();
         }
 

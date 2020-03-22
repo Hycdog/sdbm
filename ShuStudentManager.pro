@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     clockThread.cpp \
     customedGraphicsView.cpp \
+    dialogconfirm.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,13 +28,16 @@ HEADERS += \
     clockThread.h \
     customedGraphicsView.h \
     defaults.h \
+    dialogconfirm.h \
     loginwindow.h \
     mainwindow.h \
-    modifiedTableWidget.h
+    modifiedTableWidget.h \
+    warningpopup.h
 
 FORMS += \
     mainwindow.ui \
-    login.ui
+    login.ui \
+    ui_popup_noicon.ui
 
 RC_ICONS = logo.ico
 
