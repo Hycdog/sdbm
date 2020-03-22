@@ -15,6 +15,9 @@ MainWindow::MainWindow(QSqlDatabase* dbconn, QWidget *parent)
     setWindowTitle("学生数据库管理系统");
     updateYxh();
     getInformation();
+    QStackedWidget* stackedWidget = this->ui->stackedWidget;
+    stackedWidget->setCurrentIndex(0);
+
 }
 
 MainWindow::~MainWindow()
