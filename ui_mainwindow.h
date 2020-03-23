@@ -56,6 +56,7 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page_selectUser;
     QGridLayout *gridLayout_4;
+    QLabel *label_title_selectUser;
     QHBoxLayout *horizontalLayout;
     QLabel *label_stuname;
     QLineEdit *lineEdit_stuname;
@@ -65,8 +66,8 @@ public:
     QComboBox *comboBox_gender;
     QPushButton *pushButton_search;
     Table *tableWidget_displayUser;
-    QLabel *label_title_selectUser;
     QLabel *label_querystatus;
+    QPushButton *pushButton_selectStudent;
     QWidget *page_registerUser;
     QGridLayout *gridLayout_5;
     QHBoxLayout *horizontalLayout_8;
@@ -101,10 +102,11 @@ public:
     QFrame *line_2;
     QPushButton *pushButton_cameraShot;
     customedGraphicsView *graphicsView_task;
-    QWidget *page_computation;
+    QWidget *page_selectCourse;
     QGridLayout *gridLayout_3;
-    QLabel *label_title_computation;
-    QGraphicsView *graphicsView_comp;
+    QLabel *label_title_selectCourse;
+    QLabel *label_querystatus_2;
+    Table *tableWidget_selectCourse;
     QWidget *page_reportGen;
     QGridLayout *gridLayout_6;
     QLabel *label_title_reportGen;
@@ -123,7 +125,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1340, 573);
+        MainWindow->resize(878, 494);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -272,6 +274,16 @@ public:
         page_selectUser->setObjectName(QString::fromUtf8("page_selectUser"));
         gridLayout_4 = new QGridLayout(page_selectUser);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        label_title_selectUser = new QLabel(page_selectUser);
+        label_title_selectUser->setObjectName(QString::fromUtf8("label_title_selectUser"));
+        QFont font2;
+        font2.setPointSize(18);
+        label_title_selectUser->setFont(font2);
+        label_title_selectUser->setAlignment(Qt::AlignCenter);
+        label_title_selectUser->setMargin(5);
+
+        gridLayout_4->addWidget(label_title_selectUser, 0, 0, 1, 1);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         label_stuname = new QLabel(page_selectUser);
@@ -342,27 +354,29 @@ public:
 
         tableWidget_displayUser = new Table(page_selectUser);
         tableWidget_displayUser->setObjectName(QString::fromUtf8("tableWidget_displayUser"));
-        QFont font2;
-        font2.setPointSize(12);
-        tableWidget_displayUser->setFont(font2);
+        QFont font3;
+        font3.setPointSize(12);
+        tableWidget_displayUser->setFont(font3);
 
         gridLayout_4->addWidget(tableWidget_displayUser, 3, 0, 1, 1);
-
-        label_title_selectUser = new QLabel(page_selectUser);
-        label_title_selectUser->setObjectName(QString::fromUtf8("label_title_selectUser"));
-        QFont font3;
-        font3.setPointSize(18);
-        label_title_selectUser->setFont(font3);
-        label_title_selectUser->setAlignment(Qt::AlignCenter);
-        label_title_selectUser->setMargin(5);
-
-        gridLayout_4->addWidget(label_title_selectUser, 0, 0, 1, 1);
 
         label_querystatus = new QLabel(page_selectUser);
         label_querystatus->setObjectName(QString::fromUtf8("label_querystatus"));
         label_querystatus->setMaximumSize(QSize(1000, 16777215));
 
         gridLayout_4->addWidget(label_querystatus, 2, 0, 1, 1);
+
+        pushButton_selectStudent = new QPushButton(page_selectUser);
+        pushButton_selectStudent->setObjectName(QString::fromUtf8("pushButton_selectStudent"));
+        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(100);
+        sizePolicy5.setHeightForWidth(pushButton_selectStudent->sizePolicy().hasHeightForWidth());
+        pushButton_selectStudent->setSizePolicy(sizePolicy5);
+        pushButton_selectStudent->setMinimumSize(QSize(0, 50));
+        pushButton_selectStudent->setFont(font);
+
+        gridLayout_4->addWidget(pushButton_selectStudent, 4, 0, 1, 1);
 
         stackedWidget->addWidget(page_selectUser);
         page_registerUser = new QWidget();
@@ -492,7 +506,7 @@ public:
 
         label_title_registerUser = new QLabel(page_registerUser);
         label_title_registerUser->setObjectName(QString::fromUtf8("label_title_registerUser"));
-        label_title_registerUser->setFont(font3);
+        label_title_registerUser->setFont(font2);
         label_title_registerUser->setAlignment(Qt::AlignCenter);
         label_title_registerUser->setMargin(5);
 
@@ -516,7 +530,7 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         label_title_taskName = new QLabel(page_task);
         label_title_taskName->setObjectName(QString::fromUtf8("label_title_taskName"));
-        label_title_taskName->setFont(font3);
+        label_title_taskName->setFont(font2);
         label_title_taskName->setAlignment(Qt::AlignCenter);
         label_title_taskName->setMargin(5);
 
@@ -554,31 +568,38 @@ public:
         gridLayout_2->addWidget(graphicsView_task, 2, 0, 1, 1);
 
         stackedWidget->addWidget(page_task);
-        page_computation = new QWidget();
-        page_computation->setObjectName(QString::fromUtf8("page_computation"));
-        gridLayout_3 = new QGridLayout(page_computation);
+        page_selectCourse = new QWidget();
+        page_selectCourse->setObjectName(QString::fromUtf8("page_selectCourse"));
+        gridLayout_3 = new QGridLayout(page_selectCourse);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        label_title_computation = new QLabel(page_computation);
-        label_title_computation->setObjectName(QString::fromUtf8("label_title_computation"));
-        label_title_computation->setFont(font3);
-        label_title_computation->setAlignment(Qt::AlignCenter);
-        label_title_computation->setMargin(5);
+        label_title_selectCourse = new QLabel(page_selectCourse);
+        label_title_selectCourse->setObjectName(QString::fromUtf8("label_title_selectCourse"));
+        label_title_selectCourse->setFont(font2);
+        label_title_selectCourse->setAlignment(Qt::AlignCenter);
+        label_title_selectCourse->setMargin(5);
 
-        gridLayout_3->addWidget(label_title_computation, 0, 0, 1, 1);
+        gridLayout_3->addWidget(label_title_selectCourse, 0, 0, 1, 1);
 
-        graphicsView_comp = new QGraphicsView(page_computation);
-        graphicsView_comp->setObjectName(QString::fromUtf8("graphicsView_comp"));
+        label_querystatus_2 = new QLabel(page_selectCourse);
+        label_querystatus_2->setObjectName(QString::fromUtf8("label_querystatus_2"));
+        label_querystatus_2->setMaximumSize(QSize(1000, 16777215));
 
-        gridLayout_3->addWidget(graphicsView_comp, 1, 0, 1, 1);
+        gridLayout_3->addWidget(label_querystatus_2, 1, 0, 1, 1);
 
-        stackedWidget->addWidget(page_computation);
+        tableWidget_selectCourse = new Table(page_selectCourse);
+        tableWidget_selectCourse->setObjectName(QString::fromUtf8("tableWidget_selectCourse"));
+        tableWidget_selectCourse->setFont(font3);
+
+        gridLayout_3->addWidget(tableWidget_selectCourse, 2, 0, 1, 1);
+
+        stackedWidget->addWidget(page_selectCourse);
         page_reportGen = new QWidget();
         page_reportGen->setObjectName(QString::fromUtf8("page_reportGen"));
         gridLayout_6 = new QGridLayout(page_reportGen);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
         label_title_reportGen = new QLabel(page_reportGen);
         label_title_reportGen->setObjectName(QString::fromUtf8("label_title_reportGen"));
-        label_title_reportGen->setFont(font3);
+        label_title_reportGen->setFont(font2);
         label_title_reportGen->setAlignment(Qt::AlignCenter);
         label_title_reportGen->setMargin(5);
 
@@ -596,7 +617,7 @@ public:
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         label_title_configuration = new QLabel(page_configuration);
         label_title_configuration->setObjectName(QString::fromUtf8("label_title_configuration"));
-        label_title_configuration->setFont(font3);
+        label_title_configuration->setFont(font2);
         label_title_configuration->setAlignment(Qt::AlignCenter);
         label_title_configuration->setMargin(5);
 
@@ -665,13 +686,12 @@ public:
         QWidget::setTabOrder(lineEdit_stuname, pushButton_loadImage);
         QWidget::setTabOrder(pushButton_loadImage, pushButton_cameraShot);
         QWidget::setTabOrder(pushButton_cameraShot, graphicsView_task);
-        QWidget::setTabOrder(graphicsView_task, graphicsView_comp);
-        QWidget::setTabOrder(graphicsView_comp, graphicsView_report);
+        QWidget::setTabOrder(graphicsView_task, graphicsView_report);
         QWidget::setTabOrder(graphicsView_report, graphicsView_configuration);
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -683,13 +703,14 @@ public:
         label_date->setText(QCoreApplication::translate("MainWindow", "YYYY/MM/DD", nullptr));
         label_connection->setText(QCoreApplication::translate("MainWindow", "\350\277\236\346\216\245\347\212\266\346\200\201", nullptr));
         label_db->setText(QCoreApplication::translate("MainWindow", "\347\256\241\347\220\206\345\221\230", nullptr));
-        label_username->setText(QCoreApplication::translate("MainWindow", "\345\275\223\345\211\215\347\224\250\346\210\267", nullptr));
+        label_username->setText(QCoreApplication::translate("MainWindow", "\345\275\223\345\211\215\345\255\246\347\224\237\357\274\232\346\227\240", nullptr));
+        label_title_selectUser->setText(QCoreApplication::translate("MainWindow", "\351\200\211\346\213\251\345\255\246\347\224\237", nullptr));
         label_stuname->setText(QCoreApplication::translate("MainWindow", "\345\247\223\345\220\215", nullptr));
         label_sno->setText(QCoreApplication::translate("MainWindow", "\345\255\246\345\217\267", nullptr));
         label_gender->setText(QCoreApplication::translate("MainWindow", "\346\200\247\345\210\253", nullptr));
         pushButton_search->setText(QCoreApplication::translate("MainWindow", "\346\237\245\346\211\276", nullptr));
-        label_title_selectUser->setText(QCoreApplication::translate("MainWindow", "\351\200\211\346\213\251\345\255\246\347\224\237", nullptr));
         label_querystatus->setText(QString());
+        pushButton_selectStudent->setText(QCoreApplication::translate("MainWindow", "\351\200\211\346\213\251\345\255\246\347\224\237", nullptr));
         label_inputRegisterUserHint_weight->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\347\261\215\350\264\257\357\274\232", nullptr));
         label_inputRegisterUserHint_sex->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\255\246\347\224\237\345\255\246\345\217\267\357\274\232", nullptr));
         label_inputRegisterUserHint_age_2->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\207\272\347\224\237\346\227\245\346\234\237\357\274\232", nullptr));
@@ -702,7 +723,8 @@ public:
         label_title_taskName->setText(QCoreApplication::translate("MainWindow", "\345\275\225\345\205\245\345\244\264\345\203\217", nullptr));
         pushButton_loadImage->setText(QCoreApplication::translate("MainWindow", "\345\212\240\350\275\275\345\233\276\347\211\207", nullptr));
         pushButton_cameraShot->setText(QCoreApplication::translate("MainWindow", "\344\272\272\345\267\245\346\213\215\346\221\204", nullptr));
-        label_title_computation->setText(QCoreApplication::translate("MainWindow", "Func2", nullptr));
+        label_title_selectCourse->setText(QCoreApplication::translate("MainWindow", "\351\200\211\350\257\276\344\277\241\346\201\257", nullptr));
+        label_querystatus_2->setText(QString());
         label_title_reportGen->setText(QCoreApplication::translate("MainWindow", "\346\212\245\345\221\212\347\224\237\346\210\220", nullptr));
         label_title_configuration->setText(QCoreApplication::translate("MainWindow", "\345\217\202\346\225\260\350\256\276\347\275\256", nullptr));
         label_stat->setText(QCoreApplication::translate("MainWindow", "\344\270\212\346\265\267\345\244\247\345\255\246\346\225\260\346\215\256\345\272\223\347\256\241\347\220\206\347\263\273\347\273\237 v1.0\347\211\210", nullptr));

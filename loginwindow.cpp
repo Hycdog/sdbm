@@ -85,7 +85,7 @@ bool LoginWindow::connectDB(){
              qDebug()<<"连接成功"<<"connect to mysql OK";
              emit sigLoginSuccess(ui->lineEdit_username->text(),ui->lineEdit_dbname->text());
              mw = new MainWindow(db);
-             mw->setUsername(ui->lineEdit_username->text());
+//             mw->setUsername(ui->lineEdit_username->text());
              mw->setDB(ui->lineEdit_dbname->text());
              mw->showMaximized();
              this->close();

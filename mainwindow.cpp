@@ -33,8 +33,18 @@ void MainWindow::connectInterfaces(){
     connect(ui->pushButton_register, SIGNAL(clicked()), this, SLOT(registerUser()));
     ui->tableWidget_displayUser->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->tableWidget_displayUser, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(generateMenu(const QPoint&)));
+    connect(ui->pushButton_selectStudent, SIGNAL(clicked()), this, SLOT(selectUser()));
 }
 
+void MainWindow::selectUser(){
+    QList<QTableWidgetItem *> items = ui->tableWidget_displayUser->selectedItems();
+    if(items.size()>2){
+        current_stu_num = items[0]->text();
+        QString username = items[1]->text();
+        setUsername(username);
+    }
+
+}
 void MainWindow::deleteUser(QString username){
     QMessageBox warn(QMessageBox::Warning, "删除失败", "删除失败！", QMessageBox::Yes);
     warn.button(QMessageBox::Yes)->setText("确认");
@@ -89,7 +99,7 @@ void MainWindow::generateMenu(const QPoint& pos){
     if(item == nullptr)  return;
     int row_num = item->row();
     QMenu menu;
-    QAction* item1 = menu.addAction("删除用户");
+    QAction* item1 = menu.addAction("删除学生信息");
     QAction* action = menu.exec(ui->tableWidget_displayUser->mapToGlobal(pos));
     if(action == item1)
     {
@@ -102,6 +112,12 @@ void MainWindow::generateMenu(const QPoint& pos){
 }
 void MainWindow::clearTable(){
     QTableWidget* table = ui->tableWidget_displayUser;
+    table->clear();
+    table->setRowCount(0);
+}
+
+void MainWindow::clearTableGrade(){
+    QTableWidget* table = ui->tableWidget_selectCourse;
     table->clear();
     table->setRowCount(0);
 }
@@ -123,7 +139,21 @@ void MainWindow::updateYxh(){
         feedDict.clear();
     }
 }
-
+void MainWindow::warnStudentNotSelected(){
+    QMessageBox warn(QMessageBox::Warning, "未选择学生", "未选择学生！", QMessageBox::Yes);
+    warn.button(QMessageBox::Yes)->setText("确认");
+    warn.setStyleSheet(
+        "QPushButton {"
+        " font: bold 24px;"
+        "padding-left: 3ex;"
+        "padding-right: 3ex;"
+        "padding-top: 1ex;"
+        "padding-bottom: 1ex;"
+        "margin-left:0px;"
+        "}"
+        "QLabel { font:24px}"
+    );
+}
 void MainWindow::getInformation(){
     clearTable();
     QString xm = ui->lineEdit_stuname->text();
@@ -160,19 +190,61 @@ void MainWindow::getInformation(){
         for (int i=0; i<fieldCount; i++) {
             feedDict.insert(pair<QString, QString>(record.fieldName(i),record.value(i).toString()));
         }
-        insertTableRow(feedDict);
+        insertTableRow(ui->tableWidget_displayUser, feedDict);
         feedDict.clear();
     }
 }
 
-void MainWindow::insertTableRow(map<QString, QString> feedDict){
-    QTableWidget* table = ui->tableWidget_displayUser;
+void MainWindow::getGradeInformation(){
+    if(current_stu_num.size() == 0){
+        warnStudentNotSelected();
+        return;
+    }
+    clearTableGrade();
+    QString sql = "select e.xh,xq,km,xm,pscj,kscj,zpcj from e inner join c on e.kh=c.kh inner join t on e.gh=t.gh where xh=:xh";
+//    qDebug()<<Validator::SqlValidator(sql);
+    QSqlQuery result = QSqlQuery(*dbconn);
+    result.prepare(sql);
+    result.bindValue(":xh",QString("%1").arg(current_stu_num));
+    result.exec();
+    QString errMsg = result.lastError().text();
+    int recCnt = result.size();
+    if (recCnt > 0){
+        ui->label_querystatus_2->setText("共找到 "+QString::number(recCnt)+" 条记录.");
+    }
+    else{
+        ui->tableWidget_selectCourse->horizontalHeader()->setHidden(true);
+        if(errMsg.size() == 1){
+           ui->label_querystatus_2->setText("未找到相关记录.");
+        }
+        else{
+            ui->label_querystatus_2->setText("查询发生错误.");
+        }
+    }
+    while(result.next()){
+        QSqlRecord record = result.record();
+        int fieldCount = record.count();
+        map<QString, QString> feedDict;
+        for (int i=0; i<fieldCount; i++) {
+            feedDict.insert(pair<QString, QString>(record.fieldName(i),record.value(i).toString()));
+        }
+        insertTableRow(ui->tableWidget_selectCourse,feedDict);
+        feedDict.clear();
+    }
+}
+
+void MainWindow::insertTableRow(QTableWidget* table,map<QString, QString> feedDict){
     int currentRow =table->rowCount();
     int colCount = feedDict.size();
 
     if(currentRow == 0){
         table->setColumnCount(colCount);
-        table->setHorizontalHeaderLabels(DEFAULT_HEADER);
+        if(table == ui->tableWidget_displayUser){
+            table->setHorizontalHeaderLabels(DEFAULT_HEADER);
+        }
+        else if(table == ui->tableWidget_selectCourse){
+            table->setHorizontalHeaderLabels(DEFAULT_HEADER_GRADE);
+        }
     }
     table->setRowCount(currentRow+1);
     int col = 0;
@@ -184,7 +256,12 @@ void MainWindow::insertTableRow(map<QString, QString> feedDict){
         else if(i.first == "xm") item->setForeground(QBrush(COLOR_NAME));
         else item->setForeground(QBrush(COLOR_OTHER));
         item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        if(table == ui->tableWidget_displayUser){
         table->setItem(currentRow, FIELD_ORDER(i.first), item);
+        }
+        else if(table == ui->tableWidget_selectCourse){
+        table->setItem(currentRow, FIELD_ORDER_GRADE(i.first), item);
+        }
     }
 }
 
@@ -198,10 +275,11 @@ void MainWindow::populateTree(){
     item1->setText(0, "注册学生");
     item1->setTextAlignment(0,Qt::AlignHCenter | Qt::AlignVCenter);
     QTreeWidgetItem* item2 = new QTreeWidgetItem();
-    item2->setText(0, "学生拍照");
+    item2->setText(0, "成绩信息");
+    item2->setTextAlignment(0,Qt::AlignHCenter | Qt::AlignVCenter);
     tree->addTopLevelItem(item0);
     tree->addTopLevelItem(item1);
-//    tree->addTopLevelItem(item2);
+    tree->addTopLevelItem(item2);
     tree->header()->hide();
     connect(tree, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(redirect(QTreeWidgetItem*,int)));
 }
@@ -216,8 +294,9 @@ void MainWindow::redirect(QTreeWidgetItem* item, int column){
     else if (item->text(0) == "注册学生"){
         stackedWidget->setCurrentIndex(1);
     }
-    else if (item->text(0) == "学生拍照"){
-        stackedWidget->setCurrentIndex(2);
+    else if (item->text(0) == "成绩信息"){
+        stackedWidget->setCurrentIndex(3);
+        getGradeInformation();
     }
 }
 
@@ -244,7 +323,7 @@ void MainWindow::setupComboBoxes(){
     ui->comboBox_gender->setCurrentIndex(0);
 }
 void MainWindow::setUsername(QString username){
-    ui->label_username->setText("用户名："+username);
+    ui->label_username->setText("当前学生："+username);
 }
 
 void MainWindow::setDB(QString db){

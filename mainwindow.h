@@ -37,25 +37,29 @@ public:
     void setCustomedStyleSheet();
     void setUsername(QString username);
     void setDB(QString db);
-    void insertTableRow(map<QString, QString> feedDict);
+    void insertTableRow(QTableWidget* table,map<QString, QString> feedDict);
     void clearTable();
+    void clearTableGrade();
     void setupComboBoxes();
     void updateYxh();
     void warnDelete(QString username);
     void deleteUser(QString username);
+    void warnStudentNotSelected();
 private:
     void setupClockThread();
     Ui::MainWindow *ui;
     QSqlDatabase* dbconn;
     ClockThread* clk_thrd;
-
+    QString current_stu_num;
 public slots:
     void registerUser();
     void redirect(QTreeWidgetItem* item, int column);
     void updateTime(QString datetime);
     void updateStat(bool status);
     void getInformation();
+    void getGradeInformation();
     void generateMenu(const QPoint& pos);
+    void selectUser();
 
 
 
